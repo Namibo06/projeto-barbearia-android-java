@@ -156,7 +156,7 @@
 
                     <EditText
                         android:id="@+id/editTextDate"
-                        android:layout_width="190dp"
+                        android:layout_width="258dp"
                         android:layout_height="50dp"
                         android:background="@drawable/border_input_forms"
                         android:ems="10"
@@ -175,7 +175,7 @@
 
                     <Button
                         android:id="@+id/btn_forms_header"
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
                         android:background="@drawable/shape_button_forms_header"
