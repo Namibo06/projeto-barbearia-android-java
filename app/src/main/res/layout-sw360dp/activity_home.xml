@@ -184,13 +184,13 @@
 
                         <Button
                             android:id="@+id/btn_forms_header"
+                            style="@style/CustomButtonStyle"
                             android:layout_width="100dp"
-                            android:layout_height="50dp"
+                            android:layout_height="58dp"
                             android:layout_marginStart="10dp"
-                            android:background="@drawable/shape_button_forms_header"
                             android:text="Marcar"
-                            android:textColor="@color/white_f5f5f5"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
+                            android:theme="@null"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/editTextDate"
@@ -207,9 +207,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
 
+                <!--text view of header-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="900dp"
+                    android:layout_height="1200dp"
                     android:background="#49403B"
                     app:layout_constraintTop_toBottomOf="@+id/image_barber_background"
                     tools:layout_editor_absoluteX="0dp">
@@ -232,13 +233,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:textColor="#F5F5F5"
-                        android:textSize="14sp"
                         android:lineHeight="20dp"
                         android:paddingStart="40dp"
                         android:paddingEnd="40dp"
-                        android:textAlignment="textStart"
                         android:text="Já chegou a um lugar na qual pensava uma coisa, mas quando colocou o primeiro pé a dentro, tudo mudou? Sim, a BarbX faz parte de um desses lugares, aqueles que vem a primeira vez, sempre voltam para curtir essa experiência surreal de novo e de novo."
+                        android:textAlignment="textStart"
+                        android:textColor="#F5F5F5"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -248,15 +249,35 @@
                         android:id="@+id/button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        style="@style/CustomButtonStyle"
                         android:layout_marginTop="20dp"
-                        android:text="Ir no Whatsapp ↓"
+                        android:text="Ir no Whatsapp    ↓"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.921"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/subtitle_section_localization" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="300dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/title_section_localization"
+                        tools:ignore="WebViewLayout">
+
+                        <WebView
+                            android:id="@+id/iframe_maps"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="500dp" />
+                    </RelativeLayout>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--text view of header-->
                 <TextView
                     android:id="@+id/text_header"
                     android:layout_width="wrap_content"
