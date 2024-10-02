@@ -1,10 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Barbx" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Barbx" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <style name="Theme.Barbx" parent="Base.Theme.Barbx" />
+
+    <style name="CustomButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/orange</item>
+        <item name="android:textColor">@color/black_night</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.CustomButton</item>
+    </style>
+
+    <style name="ShapeAppearance.CustomButton" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>
