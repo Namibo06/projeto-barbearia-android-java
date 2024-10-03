@@ -1,22 +1,30 @@
 package br.com.barbx;
 
 import android.annotation.SuppressLint;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
 public class HomeActivity extends AppCompatActivity {
     private WebView iframeMaps;
+    private Map<String,String> envVariables = new HashMap<>();
 
     @SuppressLint({"ResourceType", "SetJavaScriptEnabled"})
     @Override
@@ -42,6 +50,10 @@ public class HomeActivity extends AppCompatActivity {
                 .load(R.drawable.barber_bg)
                 .into(imageView);
 
+        /*env file*/
+        loadEnvFromAssets();
+        String apiMapsKey = envVariables.get("API_MAPS_KEY");
+
         /*iframe google maps*/
         iframeMaps = findViewById(R.id.iframe_maps);
         iframeMaps.setBackgroundColor(Color.parseColor("#49403B"));
@@ -60,10 +72,29 @@ public class HomeActivity extends AppCompatActivity {
                 "<iframe " +
                 "loading=\"lazy\" " +
                 "allowfullscreen " +
-                "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyAShdP6sUs0mL-nYUGA60B_9J5tRkgKvUI&q=Av. Artêmia Pires Freitas, s/n - Sim, Feira de Santana - BA, 44085-370\">" +
+                "src=\"https://www.google.com/maps/embed/v1/place?key="+apiMapsKey+"&q=Av. Artêmia Pires Freitas, s/n - Sim, Feira de Santana - BA, 44085-370\">" +
                 "</iframe>" +
                 "</body></html>";
 
         iframeMaps.loadData(htmlIframe,"text/html","UTF-8");
+    }
+
+    private void loadEnvFromAssets(){
+        AssetManager assetManager = getAssets();
+        try{
+            InputStream inputStream = assetManager.open("env.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+
+            while((line = reader.readLine()) != null){
+                String[] keyValue = line.split("=");
+                if(keyValue.length == 2){
+                    envVariables.put(keyValue[0].trim(), keyValue[1].trim());
+                }
+            }
+            reader.close();
+        }catch (IOException ex){
+            Log.e("env api","Erro ao carregar o arquivo env.txt:"+ex.getMessage());
+        }
     }
 }
