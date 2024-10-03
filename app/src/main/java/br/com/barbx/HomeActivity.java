@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +55,10 @@ public class HomeActivity extends AppCompatActivity {
         loadEnvFromAssets();
         String apiMapsKey = envVariables.get("API_MAPS_KEY");
 
+        /*icon button localization*/
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button btnLocalization = findViewById(R.id.btn_localization);
+        btnLocalization.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_keyboard_arrow_down_24, 0);
+
         /*iframe google maps*/
         iframeMaps = findViewById(R.id.iframe_maps);
         iframeMaps.setBackgroundColor(Color.parseColor("#49403B"));
@@ -65,8 +70,8 @@ public class HomeActivity extends AppCompatActivity {
 
         String htmlIframe = "<html><head>" +
                 "<style>" +
-                "body { margin: 0; padding: 0; } " +
-                "iframe { width: 100%; height: 1200px; border-radius: 30px; border: 0; } " +
+                "* { margin: 0; padding: 0; box-sizing: border-box; } " +
+                "iframe { width: 100%; height: 1200px; border-radius: 40px; border: 0; } " +
                 "</style>" +
                 "</head><body>" +
                 "<iframe " +
